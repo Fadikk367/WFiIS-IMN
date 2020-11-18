@@ -1,5 +1,6 @@
 from local_relaxation import local_relaxation
 from global_relaxation import global_relaxation
+from plotter import plot_s_results
 
 if __name__ == '__main__':
   w_gs = [0.6, 1.0]
@@ -12,6 +13,8 @@ if __name__ == '__main__':
   # LOCAL RELAXATION
   for w_l in w_ls:
     local_relaxation(w_l)
+
+  plot_s_results()
 
 
 

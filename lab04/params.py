@@ -8,6 +8,10 @@ V_2 = 0.0
 n_x = 150
 n_y = 100
 
+
+x_min = 0.0
+y_min = 0.0
+
 x_max = delta * n_x
 y_max = delta * n_y
 
