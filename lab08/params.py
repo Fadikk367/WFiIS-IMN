@@ -1,0 +1,10 @@
+nx = 400
+ny = 90
+i_1 = 200
+i_2 = 210
+j_1 = 50
+delta = 0.01
+sigma = 10*delta
+XA = 0.45
+YA = 0.45
+IT_MAX = 500
