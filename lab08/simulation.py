@@ -135,7 +135,6 @@ def picard_iteration(u1, u0, Vx, Vy, dt, D):
                     u1[i, j] = crank_nicolson(u1, u0, Vx, Vy, i, j, dt, D)
 
 
-
 def simulate(D):
     x = np.linspace(0.0, (nx+1)*delta, nx+1, endpoint=True)
     y = np.linspace(0.0, (ny+1)*delta, ny+1, endpoint=True)
@@ -154,22 +153,20 @@ def simulate(D):
 
     t_max = IT_MAX*delta
 
-    ks = [int(IT_MAX/5), 2*int(IT_MAX/5), 3*int(IT_MAX/5), 4*int(IT_MAX/5), IT_MAX]
+    ks = [0, int(IT_MAX/5), 2*int(IT_MAX/5), 3*int(IT_MAX/5), 4*int(IT_MAX/5), IT_MAX]
 
 
     initialize_matrix(u0)   
 
     for it in np.arange(0, IT_MAX+1):
-        u1 = u0
 
         picard_iteration(u1, u0, Vx, Vy, dt, D)
 
-        u0 = u1
+        np.copyto(u0, u1)
+
 
         if it in ks:
-            plot_color_map(x, y, np.transpose(u0), f"it={it}, D={D}", "u")
-        # if it%10 == 0:
-        #     plot_color_map(x, y, np.transpose(u0), it, "u")
+            plot_color_map(x, y, np.transpose(u0), f"it={it}, D={D}", "u", True)
 
         c = calculate_c(u0)
         x_sr = calculate_x_sr(u0)

@@ -7,4 +7,4 @@ delta = 0.01
 sigma = 10*delta
 XA = 0.45
 YA = 0.45
-IT_MAX = 500
+IT_MAX = 10000

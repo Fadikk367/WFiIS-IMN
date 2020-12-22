@@ -24,17 +24,19 @@ def plot_linear():
   plt.clf()
 
 
-def plot_color_map(x, y, V, Q, plot_type):
-  z_min, z_max = np.amin(V), np.amax(V)
+def plot_color_map(x, y, V, Q, plot_type, fix_min_at_zero=False):
+  z_min = 0.0 if fix_min_at_zero else np.amin(V)
+  z_max = np.amax(V)
+
   x, y = np.meshgrid(x, y)
 
   plt.xlabel("x")
   plt.ylabel("y")
 
-  plt.title(rf'{plot_type}(x,y),$ Q={Q}$')
+  plt.title(rf'{plot_type}(x,y),$ {Q}$')
   figure = plt.gcf()
   figure.set_size_inches(20, 6)
-  plt.pcolor(x, y, V, cmap='turbo', vmin=z_min, vmax=z_max, shading='auto')
+  plt.pcolor(x, y, V, cmap='plasma', vmin=z_min, vmax=z_max, shading='auto')
   plt.colorbar()
     
   plt.savefig(f'{plot_type}_Q_{Q}.png')
